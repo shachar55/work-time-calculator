@@ -1,0 +1,7 @@
+﻿  main_code.cpp
+C:\Users\shach\Desktop\work-time-calculator\main_code\main_code\main_code.cpp(21,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\shach\Desktop\work-time-calculator\main_code\main_code\main_code.cpp(135,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\shach\Desktop\work-time-calculator\main_code\main_code\main_code.cpp(168,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\shach\Desktop\work-time-calculator\main_code\main_code\main_code.cpp(178,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\shach\Desktop\work-time-calculator\main_code\main_code\main_code.cpp(240,35): warning C4018: '<': signed/unsigned mismatch
+  main_code.vcxproj -> C:\Users\shach\Desktop\work-time-calculator\main_code\Debug\main_code.exe
