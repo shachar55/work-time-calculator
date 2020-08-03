@@ -129,7 +129,10 @@ int main()
                     {
                         string line;
                         getline(file, line, '\n');
-                        Times.push_back(line);
+                        if (line != "")
+                        {
+                            Times.push_back(line);
+                        }
                     }
                     // converting vector Times to minutes and hours and adding them to their vectors
                     for (int i = 0; i < Times.size(); i++)
