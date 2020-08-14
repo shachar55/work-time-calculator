@@ -45,15 +45,17 @@ int main()
     double result;
     char ans;
 
+    string filePath;
     string time;
 
     vector<int> hours;
     vector<int> minutes;
 
     cout << "Do you want to import a CSV file? (y/n) " << endl;
-    cin >> ans;
+    char ans1;
+    cin >> ans1;
     cout << endl;
-    if (ans == 'n')
+    if (ans1 == 'n')
     {
         // taking the amount of days
         while (strDays == "0")
@@ -104,12 +106,12 @@ int main()
 
         }
     }
-    else if (ans == 'y') // opening and reading CSV file
+    else if (ans1 == 'y') // opening and reading CSV file
     {
         int keep = 0;
         while (keep == 0)
         {
-            string filePath;
+            
             // opening the file and checking if its ok
             cout << "Type the file path" << endl;
             cin >> filePath;
@@ -221,46 +223,67 @@ int main()
         }
         cout << "Do you want to export to CSV? " << endl << "(y/n)" << endl;
         cin >> ans;
-        // exporting to CSV file
         if (ans == 'y')
         {
-            try
+            cout << "Do you want to update your file? (y/n)" << endl;
+            cin >> ans;
+            if (ans == 'y')
             {
-                string preName;
-                cout << "Enter the file name:" << endl;
-                cin >> preName;
-                vector<char> nameVerf;
-                char c[15] = { '"',',',';','/','\\','?','%','*',':','|','<','>','.','=' };
-                for (int i = 0; i < 15; i++)
+                ofstream upt;
+                upt.open(filePath, ios::app);
+                    upt << "\n" << "\n";
+                    upt << "Your total time:" << "," << result << "\n";
+                    if (avg != 0)
+                    {
+                        upt << "Your average time per day: " << "," << avg << "\n";
+                    }
+                    if (ern != 0)
+                    {
+                        upt << "Your earnings: " << "," << ern;
+                    }
+            }   
+            else
+            {
+                try
                 {
-                    nameVerf.push_back(c[i]);
+                    // exporting to CSV file
+                    string preName;
+                    cout << "Enter the file name:" << endl;
+                    cin >> preName;
+                    vector<char> nameVerf;
+                    char c[15] = { '"',',',';','/','\\','?','%','*',':','|','<','>','.','=' };
+                    for (int i = 0; i < 15; i++)
+                    {
+                        nameVerf.push_back(c[i]);
+                    }
+                    string name = RemoveChar(preName, nameVerf);
+                    string csv = ".csv";
+                    name.append(csv);
+                    fstream expo;
+                    expo.open(name, ios::out);
+                    for (int i = 0; i < Times.size(); i++)
+                    {
+                        expo << Times[i] << "\n";
+                    }
+                    expo << "\n" << "\n";
+                    expo << "Your total time:" << "," << result << "\n";
+                    if (avg != 0)
+                    {
+                        expo << "Your average time per day: " << "," << avg << "\n";
+                    }
+                    if (ern != 0)
+                    {
+                        expo << "Your earnings: " << "," << ern;
+                    }
                 }
-                string name = RemoveChar(preName, nameVerf);
-                string csv = ".csv";
-                name.append(csv);
-                fstream expo;
-                expo.open(name, ios::out);
-                for (int i = 0; i < Times.size(); i++)
+                catch (...)
                 {
-                    expo << Times[i] << "\n";
-                }
-                expo << "\n" << "\n";
-                expo << "Your total time:" << "," << result << "\n";
-                if (avg != 0)
-                {
-                    expo << "Your average time per day: " << "," << avg << "\n";
-                }
-                if (ern != 0)
-                {
-                    expo << "Your earnings: " << "," << ern;
+                    cout << "An Error occurred please try again(0x7)" << endl;
+                    Sleep(5000);
+                    return 0;
                 }
             }
-            catch (...)
-            {
-                cout << "An Error occurred please try again(0x7)" << endl;
-                Sleep(5000);
-                return 0;
-            }
+            
             
         }
 
