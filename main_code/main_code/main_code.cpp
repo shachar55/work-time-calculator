@@ -225,9 +225,13 @@ int main()
         cin >> ans;
         if (ans == 'y')
         {
-            cout << "Do you want to update your file? (y/n)" << endl;
-            cin >> ans;
-            if (ans == 'y')
+            char ans2;   
+            if (ans1 == 'y')
+            {
+                cout << "Do you want to update your file? (y/n)" << endl;
+                cin >> ans2;
+            }
+            if (ans2 == 'y')
             {
                 ofstream upt;
                 upt.open(filePath, ios::app);
