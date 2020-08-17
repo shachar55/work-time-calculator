@@ -135,14 +135,15 @@ int main()
                         {
                             Times.push_back(line);
                         }
-
                     }
                     // converting vector Times to minutes and hours and adding them to their vectors
                     for (int i = 0; i < Times.size(); i++)
                     {
                         cout << Times[i] << endl;
                         strHor = Times[i].substr(0, Times[i].find(":"));
+
                         strMin = Times[i].substr(Times[i].find(":") + 1);
+
 
                         min = stoi(strMin);
                         minutes.push_back(min);
@@ -150,7 +151,7 @@ int main()
                         hor = stoi(strHor);
                         hours.push_back(hor);
 
-                        
+
                     }
                                                // closing file
                     keep = 1;   
