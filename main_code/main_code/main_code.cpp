@@ -131,7 +131,7 @@ int main()
                     {
                         string line;
                         getline(file, line, '\n');
-                        if (line != "")
+                        if (line != "" || " " || '\n')
                         {
                             Times.push_back(line);
                         }
