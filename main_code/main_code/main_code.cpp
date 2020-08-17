@@ -25,10 +25,10 @@ string RemoveChar(string str, vector<char> chars)
         }
         else
         {
-            str.erase(remove(str.begin(), str.end(), chars[i]), str.end());
+                str.erase(remove(str.begin(), str.end(), chars[i]), str.end());
         }
-    return str;
-}
+        return str;
+    }
 
 int main()
 {
@@ -131,19 +131,18 @@ int main()
                     {
                         string line;
                         getline(file, line, '\n');
-                        if (line != "")
+                        if (line != "" && line.length() <= 5 )
                         {
                             Times.push_back(line);
                         }
+
                     }
                     // converting vector Times to minutes and hours and adding them to their vectors
                     for (int i = 0; i < Times.size(); i++)
                     {
                         cout << Times[i] << endl;
                         strHor = Times[i].substr(0, Times[i].find(":"));
-
                         strMin = Times[i].substr(Times[i].find(":") + 1);
-
 
                         min = stoi(strMin);
                         minutes.push_back(min);
@@ -151,10 +150,10 @@ int main()
                         hor = stoi(strHor);
                         hours.push_back(hor);
 
-
+                        
                     }
-                    file.close();                           // closing file
-                    keep = 1;
+                                               // closing file
+                    keep = 1;   
                 }
 
             }
@@ -225,9 +224,13 @@ int main()
         cin >> ans;
         if (ans == 'y')
         {
-            cout << "Do you want to update your file? (y/n)" << endl;
-            cin >> ans;
-            if (ans == 'y')
+            char ans2;
+            if (ans1 == 'y')
+            {
+                cout << "Do you want to update your file? (y/n)" << endl;
+                cin >> ans2;
+            }
+            if (ans2 == 'y')
             {
                 ofstream upt;
                 upt.open(filePath, ios::app);
